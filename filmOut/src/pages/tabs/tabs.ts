@@ -2,10 +2,10 @@ import { Component } from '@angular/core';
 
 import { AboutPage } from '../about/about';
 import { ContactPage } from '../contact/contact';
-import { HomePage } from '../home/home';
+// import { HomePage } from '../home/home';
 import { IonicPage } from 'ionic-angular';
 
-import { PROFILE_PAGE } from "../pages.constants";
+import { HOME_PAGE, ABOUT_PAGE, CONTACT_PAGE, PROFILE_PAGE } from "../pages.constants";
 
 @IonicPage({
   segment: 'tabs-page'  // Importante. Para que recargue la página en la cual estamos
@@ -15,9 +15,9 @@ import { PROFILE_PAGE } from "../pages.constants";
 })
 export class TabsPage {
 
-  tab1Root = 'HomePage';
-  tab2Root = 'AboutPage';
-  tab3Root = 'ContactPage';
+  tab1Root = HOME_PAGE;  
+  tab2Root = ABOUT_PAGE;
+  tab3Root = CONTACT_PAGE;
   tab4Root = PROFILE_PAGE;
 
   constructor() {
