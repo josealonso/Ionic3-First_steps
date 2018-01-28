@@ -15,26 +15,35 @@ export class HomePage {
 	}
 
 	ionViewDidLoad() {
-    console.log('HomePage ionViewDidLoad');
-    this.loadMoviesList();
-  }
+		console.log('HomePage ionViewDidLoad');
+		this.loadMoviesList();
+	}
 
-  ionViewDidEnter() {
-    console.log('HomePage ionViewDidEnter');
-  }
+	ionViewDidEnter() {
+		console.log('HomePage ionViewDidEnter');
+	}
 
-  ionViewDidLeave() {
-    console.log('HomePage ionViewDidLeave');
-  }
+	ionViewDidLeave() {
+		console.log('HomePage ionViewDidLeave');
+	}
 
-  ionViewDidUnload() {
-    console.log('HomePage ionViewDidUnload');
-  }
+	ionViewDidUnload() {
+		console.log('HomePage ionViewDidUnload');
+	}
 
 	loadMoviesList() {
-		this.api.getMovies().subscribe((movies) => {
+		const $movies = this.api.getMovies();
+		$movies.subscribe((movies) => {
 			this.movies = movies;
 			console.log('movies', movies);
 		});
+    return $movies;
 	}
+
+	doRefresh(event) {
+		this.loadMoviesList().subscribe((movies) => {
+			event.complete();
+		});
+	}
+
 }
