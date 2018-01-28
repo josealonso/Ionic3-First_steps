@@ -18,7 +18,7 @@
   </ion-refresher>
 
   <ion-list>
-  <ion-item *ngFor="let movie of movies">
+  <ion-item *ngFor="let movie of movies" (click)="gotoMoviedetail(movie)">
     <ion-thumbnail item-start>
       <img [src]="movie.poster_url">
     </ion-thumbnail>

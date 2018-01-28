@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController, IonicPage } from 'ionic-angular';
 import { Api, Movie } from '../../providers';
+import { MOVIE_DETAIL_PAGE } from "../pages.constants";
 
 @IonicPage()
 @Component({
@@ -15,20 +16,20 @@ export class HomePage {
 	}
 
 	ionViewDidLoad() {
-		console.log('HomePage ionViewDidLoad');
+		// console.log('HomePage ionViewDidLoad');
 		this.loadMoviesList();
 	}
 
 	ionViewDidEnter() {
-		console.log('HomePage ionViewDidEnter');
+		// console.log('HomePage ionViewDidEnter');
 	}
 
 	ionViewDidLeave() {
-		console.log('HomePage ionViewDidLeave');
+		// console.log('HomePage ionViewDidLeave');
 	}
 
 	ionViewDidUnload() {
-		console.log('HomePage ionViewDidUnload');
+		// console.log('HomePage ionViewDidUnload');
 	}
 
 	loadMoviesList() {
@@ -45,5 +46,11 @@ export class HomePage {
 			event.complete();
 		});
 	}
+
+  gotoMoviedetail(movie) {
+    this.navCtrl.push(MOVIE_DETAIL_PAGE, {
+      movie: movie
+    });
+  }
 
 }
