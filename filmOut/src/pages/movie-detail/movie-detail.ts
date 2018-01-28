@@ -19,7 +19,7 @@ export class MovieDetailPage {
   movie: Movie;
   
   constructor(public navCtrl: NavController, public navParams: NavParams) {
-    this.movie = navParams.get('movie');
+    this.movie = navParams.get('movie') || new Movie();
   }
 
   ionViewDidLoad() {

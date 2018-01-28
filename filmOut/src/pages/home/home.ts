@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, IonicPage } from 'ionic-angular';
+import { NavController, IonicPage, App } from 'ionic-angular';
 import { Api, Movie } from '../../providers';
 import { MOVIE_DETAIL_PAGE } from "../pages.constants";
 
@@ -11,7 +11,11 @@ import { MOVIE_DETAIL_PAGE } from "../pages.constants";
 export class HomePage {
 	movies: Movie[];
 
-	constructor(public navCtrl: NavController, public api: Api) {
+	constructor(
+    public navCtrl: NavController,
+    public api: Api,
+    public appCtrl: App
+    ) {
 		// En un constructor no se deben hacer cosas asíncronas
 	}
 
@@ -51,6 +55,20 @@ export class HomePage {
     this.navCtrl.push(MOVIE_DETAIL_PAGE, {
       movie: movie
     });
+  }
+
+  pruebaNav() {
+    // Navega poniendo en la pila de páginas
+    // this.navCtrl.push(MOVIE_DETAIL_PAGE);
+
+    // Navega poniendo como la primera de la pila
+    // this.navCtrl.setRoot(MOVIE_DETAIL_PAGE);
+
+    // Navega poniendo en la pila del controlador global de navegación (rootNav)
+    // this.appCtrl.getRootNav().push(MOVIE_DETAIL_PAGE);
+
+    // Similar al anterior, pero no puede volver
+    this.appCtrl.getRootNav().setRoot(MOVIE_DETAIL_PAGE);
   }
 
 }
