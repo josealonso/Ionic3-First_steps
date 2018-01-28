@@ -8,19 +8,33 @@ import { Api, Movie } from '../../providers';
 	templateUrl: 'home.html'
 })
 export class HomePage {
-	
-  movies: Movie[];
+	movies: Movie[];
 
 	constructor(public navCtrl: NavController, public api: Api) {
+		// En un constructor no se deben hacer cosas asíncronas
+	}
 
+	ionViewDidLoad() {
+    console.log('HomePage ionViewDidLoad');
+    this.loadMoviesList();
   }
 
-  pruebaList() {
-    this.api.getMovies().subscribe(movies => {
-      this.movies = movies;
-      console.log('movies', movies);
-    });
+  ionViewDidEnter() {
+    console.log('HomePage ionViewDidEnter');
   }
 
+  ionViewDidLeave() {
+    console.log('HomePage ionViewDidLeave');
+  }
+
+  ionViewDidUnload() {
+    console.log('HomePage ionViewDidUnload');
+  }
+
+	loadMoviesList() {
+		this.api.getMovies().subscribe((movies) => {
+			this.movies = movies;
+			console.log('movies', movies);
+		});
+	}
 }
-
