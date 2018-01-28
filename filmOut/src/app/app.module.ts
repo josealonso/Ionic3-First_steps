@@ -5,6 +5,8 @@ import { MyApp } from './app.component';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
+import { Api, Movie } from '../providers';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -12,6 +14,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
     IonicModule.forRoot(MyApp, {
       // Consulta ---> https://ionicframework.com/docs/api/config/Config
       mode: 'ios'  // 'md' (Material Design) o 'ios'
@@ -22,6 +25,8 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     MyApp,
   ],
   providers: [
+    Api, 
+    Movie,
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
